@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, Outlet } from "react-router-dom";
 import Body from "./components/Body";
 import Header from "./components/Header";
 import About from "./components/About";
@@ -9,7 +9,11 @@ function App() {
   return (
     <>
       <Header />
-      <Body />
+      <Outlet />
+      {/* The Outlet component renders the child routes */}
+      {/* For example, it will render Body, About, or Contact based on the current route */}
+      {/* The Header component is always displayed at the top */}
+      {/* The Error component will be displayed if there is an error in any of the routes */}
     </>
   );
 }
@@ -17,15 +21,21 @@ export const appRouter = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    children: [
+      {
+        path: "/",
+        element: <Body />,
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
+      },
+    ],
     errorElement: <Error />,
-  },
-  {
-    path: "/about",
-    element: <About />,
-  },
-  {
-    path: "/contact",
-    element: <Contact />,
   },
 ]);
 
