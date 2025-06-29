@@ -1,5 +1,5 @@
 import React from 'react'
-import { useRouteError } from 'react-router-dom'
+import { Link, useRouteError } from 'react-router-dom'
 
 const Error = () => {
     const err = useRouteError();
@@ -8,7 +8,7 @@ const Error = () => {
         <h1>Oops! Something went wrong.</h1>
         <h2>{err.status} - {err.statusText}</h2>
         <p>Please check the URL or return to the home page.</p>
-        <a href="/">Go to Home</a>
+        <Link to="/">Go to Home</Link>
     </div>
   )
 }

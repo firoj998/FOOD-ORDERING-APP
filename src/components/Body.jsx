@@ -1,22 +1,21 @@
 import { useEffect, useState } from "react";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
+  const onlineStatus = useOnlineStatus();
 
   const fetchRestaurants = async () => {
     try {
       const response = await fetch(
-        "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9628669&lng=77.57750899999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+        "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9352403&lng=77.624532&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
       );
       const res = await response.json();
-      // console.log(
-      //   res?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
-      //     ?.restaurants
-      // );
       setListOfRestaurants(
         res?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
           ?.restaurants
@@ -45,6 +44,13 @@ const Body = () => {
 
     setFilteredRestaurants(filteredRestaurants);
   };
+  if (!onlineStatus)
+    return (
+      <h1>
+        {" "}
+        Looks like you are Offline!! please check your internet connection;
+      </h1>
+    );
   if (listOfRestaurants.length === 0) {
     return <Shimmer />;
   }
@@ -68,15 +74,20 @@ const Body = () => {
       </div>
       <div className="res-container">
         {filteredRestaurants.map((restaurant) => (
-          <RestaurantCard
+          <Link
+            Link
+            to={`/restaurant/${restaurant.info.id}`}
             key={restaurant.info.id}
-            name={restaurant?.info?.name}
-            cuisines={restaurant?.info?.cuisines?.join(", ")}
-            rating={restaurant?.info?.avgRating}
-            deliveryTime={restaurant?.info?.sla?.deliveryTime}
-            imageUrl={restaurant?.info?.cloudinaryImageId}
-            costForTwo={restaurant?.info?.costForTwo}
-          />
+          >
+            <RestaurantCard
+              name={restaurant?.info?.name}
+              cuisines={restaurant?.info?.cuisines?.join(", ")}
+              rating={restaurant?.info?.avgRating}
+              deliveryTime={restaurant?.info?.sla?.deliveryTime}
+              imageUrl={restaurant?.info?.cloudinaryImageId}
+              costForTwo={restaurant?.info?.costForTwo}
+            />
+          </Link>
         ))}
       </div>
     </div>
