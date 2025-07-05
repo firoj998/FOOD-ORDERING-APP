@@ -1,4 +1,3 @@
-import React from "react";
 import { IMAGE_CDN_URL } from "../utils/constants";
 
 const RestaurantCard = ({
@@ -10,14 +9,14 @@ const RestaurantCard = ({
   costForTwo,
 }) => {
   return (
-    <div className="res-card" style={{ backgroundColor: "#f0f0f0" }}>
+    <div className="p-2 w-[250px] rounded-lg bg-gray-200 hover:bg-gray-300">
       <img
-        className="res-logo"
+        className="res-logo rounded-lg"
         src={IMAGE_CDN_URL + imageUrl}
         alt="Restaurant Logo"
       />
-      <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-        <h3>{name}</h3>
+      <div>
+        <h3 className="font-bold py-4 text-lg">{name}</h3>
         <h4>{cuisines}</h4>
         <h4>{rating} star</h4>
         <h4>{costForTwo}</h4>

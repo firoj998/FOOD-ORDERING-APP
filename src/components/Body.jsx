@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
-import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import { Link } from "react-router-dom";
 
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
@@ -57,25 +57,33 @@ const Body = () => {
 
   return (
     <div className="body">
-      <div className="filter">
-        <div className="search-container">
+      <div className="flex items-center">
+        <div className="p-4 m-4">
           <input
+            className="border border-solid border-black"
             type="text"
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
           />
-          <button className="search-btn" onClick={HandleSearchButton}>
+          <button
+            className="px-4 py-2 ml-4 bg-green-100 rounded-md cursor-pointer"
+            onClick={HandleSearchButton}
+          >
             Search
           </button>
         </div>
-        <button className="filter-btn" onClick={handleButtonClick}>
-          Top Rated Restaurants
-        </button>
+        <div>
+          <button
+            className="px-4 py-2 bg-green-100 rounded-md cursor-pointer"
+            onClick={handleButtonClick}
+          >
+            Top Rated Restaurants
+          </button>
+        </div>
       </div>
-      <div className="res-container">
+      <div className="flex flex-wrap gap-4 px-4">
         {filteredRestaurants.map((restaurant) => (
           <Link
-            Link
             to={`/restaurant/${restaurant.info.id}`}
             key={restaurant.info.id}
           >
