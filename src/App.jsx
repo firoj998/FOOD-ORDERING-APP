@@ -6,20 +6,32 @@ import Error from "./components/Error";
 import Contact from "./components/Contact";
 import RestaurantMenu from "./components/RestaurantMenu";
 //import Grocery from "./components/Grocery";
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
+import UserContext from "./utils/UserContext";
 
 const Grocery = lazy(() => import("./components/Grocery"));
 
 function App() {
+  const [userName, setUserName] = useState();
+  // authentication
+  useEffect(() => {
+    // make an api call
+    const data = {
+      name: "Mohd Firoj",
+    };
+    setUserName(data.name);
+  }, []);
   return (
-    <>
+    <UserContext.Provider value={{loggedInUser:userName, setUserName}}>
+    <div className="app">
       <Header />
       <Outlet />
       {/* The Outlet component renders the child routes */}
       {/* For example, it will render Body, About, or Contact based on the current route */}
       {/* The Header component is always displayed at the top */}
       {/* The Error component will be displayed if there is an error in any of the routes */}
-    </>
+    </div>
+    </UserContext.Provider>
   );
 }
 export const appRouter = createBrowserRouter([
