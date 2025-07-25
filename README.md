@@ -1,12 +1,58 @@
-# React + Vite
+Parcel
+Dev Build
+Local Server
+HMR = Hot Module Replacement
+File Watching Algorithm - written in C++
+Caching - Faster Builds
+Image Optimization
+Minification
+Bundling
+Compress
+Consistent Hashing
+Code Splitting
+Differential Bundling - support older browsers
+Diagnostic
+Error Handling
+HTTPs
+Tree Shaking - remove unused code
+Different dev and prod bundles
+Namaste Food
+/**
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Header
+Logo
+Nav Items
+Body
+Search
+RestaurantContainer
+RestaurantCard
+ - Img
+ - Name of Res, Star Rating, cuisine, delery tie
+Footer
+Copyright
+Links
+Address
+Contact */
+Two types of Export/Import
 
-Currently, two official plugins are available:
+Default Export/Import
+export default Component; import Component from "path";
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Named Export/Import
+export const Component; import {Component} from "path";
 
-## Expanding the ESLint configuration
+React Hooks
+(Normal JS utility functions)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+useState() - Superpowerful State Variables in react
+useEffect()
+2 types Routing in web apps
+Client Side Routing
+Server Side Routing
+Redux Toolkit
+Install @reduxjs/toolkit and react-redux
+Build our store
+Connect our store to our app
+Slice (cartSlice)
+dispatch(action)
+Selector
