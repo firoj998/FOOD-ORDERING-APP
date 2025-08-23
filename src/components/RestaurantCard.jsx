@@ -11,7 +11,7 @@ const RestaurantCard = ({
   return (
     <div className="p-2 w-[250px] rounded-lg bg-gray-200 hover:bg-gray-300">
       <img
-        className="res-logo rounded-lg"
+        className="res-logo rounded-lg hover:scale-105"
         src={IMAGE_CDN_URL + imageUrl}
         alt="Restaurant Logo"
       />
