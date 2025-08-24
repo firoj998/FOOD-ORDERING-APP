@@ -99,14 +99,7 @@ const Body = () => {
             to={`/restaurant/${restaurant.info.id}`}
             key={restaurant.info.id}
           >
-            <RestaurantCard
-              name={restaurant?.info?.name}
-              cuisines={restaurant?.info?.cuisines?.join(", ")}
-              rating={restaurant?.info?.avgRating}
-              deliveryTime={restaurant?.info?.sla?.deliveryTime}
-              imageUrl={restaurant?.info?.cloudinaryImageId}
-              costForTwo={restaurant?.info?.costForTwo}
-            />
+            <RestaurantCard resData = {restaurant?.info}/>
           </Link>
         ))}
       </div>
