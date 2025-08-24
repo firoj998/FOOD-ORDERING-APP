@@ -1,12 +1,12 @@
 import { render, screen } from "@testing-library/react";
-import { describe, expect, it, test } from "vitest";
+import { describe, expect, it } from "vitest";
 import Contact from "./Contact";
 
 // Testcase to check loading of a component
 
 // describe is used to combine the similar test cases together
 describe("Contact Us Page Test Case", () => {
-  test("Should load contact us component", () => {
+  it("Should load contact us component", () => {
     render(<Contact />);
     const heading = screen.getByRole("heading");
     expect(heading).toBeInTheDocument();
